@@ -39,8 +39,15 @@
             button4 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            txtPostfix = new TextBox();
+            button5 = new Button();
+            txtInfix = new TextBox();
+            label3 = new Label();
             tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            label4 = new Label();
             tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -129,6 +136,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Location = new Point(247, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -137,23 +145,80 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(txtPostfix);
+            tabPage1.Controls.Add(button5);
+            tabPage1.Controls.Add(txtInfix);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Cursor = Cursors.Cross;
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(529, 504);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Infix a postfix";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtPostfix
+            // 
+            txtPostfix.Location = new Point(273, 76);
+            txtPostfix.Name = "txtPostfix";
+            txtPostfix.Size = new Size(232, 23);
+            txtPostfix.TabIndex = 3;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(40, 76);
+            button5.Name = "button5";
+            button5.Size = new Size(123, 23);
+            button5.TabIndex = 2;
+            button5.Text = "Convertir";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += convertirApostfix;
+            // 
+            // txtInfix
+            // 
+            txtInfix.Location = new Point(169, 26);
+            txtInfix.Name = "txtInfix";
+            txtInfix.Size = new Size(336, 23);
+            txtInfix.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(37, 31);
+            label3.Name = "label3";
+            label3.Size = new Size(126, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Ingrese expresión infix:";
             // 
             // tabPage2
             // 
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(192, 72);
+            tabPage2.Size = new Size(529, 504);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(529, 504);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(169, 79);
+            label4.Name = "label4";
+            label4.Size = new Size(98, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Expresión postfix:";
             // 
             // Form1
             // 
@@ -173,6 +238,8 @@
             Name = "Form1";
             Text = "Ejemplos actuales";
             tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,5 +258,11 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
+        private TabPage tabPage3;
+        private TextBox txtPostfix;
+        private Button button5;
+        private TextBox txtInfix;
+        private Label label3;
+        private Label label4;
     }
 }
