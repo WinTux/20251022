@@ -39,15 +39,24 @@
             button4 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label4 = new Label();
             txtPostfix = new TextBox();
             button5 = new Button();
             txtInfix = new TextBox();
             label3 = new Label();
             tabPage2 = new TabPage();
+            lblResultadoPostfix = new Label();
+            button6 = new Button();
+            lblExpresionPostfix = new Label();
+            label5 = new Label();
             tabPage3 = new TabPage();
-            label4 = new Label();
+            groupBox1 = new GroupBox();
+            lienzo = new Panel();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -159,6 +168,15 @@
             tabPage1.Text = "Infix a postfix";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(169, 79);
+            label4.Name = "label4";
+            label4.Size = new Size(98, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Expresión postfix:";
+            // 
             // txtPostfix
             // 
             txtPostfix.Location = new Point(273, 76);
@@ -194,31 +212,81 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(lblResultadoPostfix);
+            tabPage2.Controls.Add(button6);
+            tabPage2.Controls.Add(lblExpresionPostfix);
+            tabPage2.Controls.Add(label5);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(529, 504);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Calculo de postfix";
             tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Click += tabPage2_Click;
+            // 
+            // lblResultadoPostfix
+            // 
+            lblResultadoPostfix.AutoSize = true;
+            lblResultadoPostfix.Location = new Point(123, 52);
+            lblResultadoPostfix.Name = "lblResultadoPostfix";
+            lblResultadoPostfix.Size = new Size(62, 15);
+            lblResultadoPostfix.TabIndex = 3;
+            lblResultadoPostfix.Text = "Resultado:";
+            // 
+            // button6
+            // 
+            button6.Location = new Point(32, 48);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 2;
+            button6.Text = "Calcular";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += CalcularExpresionPostfix;
+            // 
+            // lblExpresionPostfix
+            // 
+            lblExpresionPostfix.AutoSize = true;
+            lblExpresionPostfix.Location = new Point(150, 18);
+            lblExpresionPostfix.Name = "lblExpresionPostfix";
+            lblExpresionPostfix.Size = new Size(0, 15);
+            lblExpresionPostfix.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(30, 18);
+            label5.Name = "label5";
+            label5.Size = new Size(114, 15);
+            label5.TabIndex = 0;
+            label5.Text = "Expresión en postfix:";
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(groupBox1);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(529, 504);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
+            tabPage3.Text = "Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // groupBox1
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(169, 79);
-            label4.Name = "label4";
-            label4.Size = new Size(98, 15);
-            label4.TabIndex = 4;
-            label4.Text = "Expresión postfix:";
+            groupBox1.Controls.Add(lienzo);
+            groupBox1.Location = new Point(28, 27);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(479, 373);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Lienzo";
+            // 
+            // lienzo
+            // 
+            lienzo.Location = new Point(35, 45);
+            lienzo.Name = "lienzo";
+            lienzo.Size = new Size(413, 296);
+            lienzo.TabIndex = 0;
             // 
             // Form1
             // 
@@ -237,9 +305,14 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Ejemplos actuales";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -264,5 +337,11 @@
         private TextBox txtInfix;
         private Label label3;
         private Label label4;
+        private Label lblExpresionPostfix;
+        private Label label5;
+        private Label lblResultadoPostfix;
+        private Button button6;
+        private GroupBox groupBox1;
+        private Panel lienzo;
     }
 }

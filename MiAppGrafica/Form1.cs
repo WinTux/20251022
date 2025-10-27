@@ -99,7 +99,7 @@ namespace MiAppGrafica
             for (int i = 0; i < infix.Length; i++)
             {
                 char c = infix[i];
-                if(c == ' ')
+                if (c == ' ')
                     continue;
                 tokens.Enqueue(c.ToString());
             }
@@ -110,11 +110,12 @@ namespace MiAppGrafica
                                  // Paso 2: Debe existir una iteración para repetir los pasos desde el 3 hasta el 6
 
             string postfix = "";
-            
+
             while (tokens.Count > 0)
             {
                 string elem = tokens.Dequeue();
-                switch (elem) {
+                switch (elem)
+                {
                     case "(":
                         // Paso 3
                         elementos.Push(elem);
@@ -130,17 +131,21 @@ namespace MiAppGrafica
                         //{
                         //    postfix += elementos.Pop() + " ";
                         //}
-                        while(elementos.Peek() != "(")
+                        while (elementos.Peek() != "(")
                         {
                             postfix += elementos.Pop() + " ";
                         }
                         elementos.Pop();// es el (
                         break;
-                    case "+": case "-": case "*": case "/": case "^":
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                    case "^":
 
                         // Paso 5: extraer operadores si son de mayor o igual precedencia
-                        while (elementos.Peek() == "+" || elementos.Peek() == "-" || 
-                               elementos.Peek() == "*" || elementos.Peek() == "/" || 
+                        while (elementos.Peek() == "+" || elementos.Peek() == "-" ||
+                               elementos.Peek() == "*" || elementos.Peek() == "/" ||
                                elementos.Peek() == "^")
                         {
                             // Aquí se debe comparar la precedencia
@@ -192,6 +197,91 @@ namespace MiAppGrafica
 
             }
             txtPostfix.Text = postfix;
+            lblExpresionPostfix.Text = postfix;
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CalcularExpresionPostfix(object sender, EventArgs e)
+        {
+            // Ejemplo: 3 4 2 1 - * +
+            string postfix = txtPostfix.Text;
+            Queue<string> tokens = new Queue<string>();
+            for (int i = 0; i < postfix.Length; i++)
+            {
+                char c = postfix[i];
+                if (c == ' ')
+                    continue;
+                tokens.Enqueue(c.ToString());
+            }
+            Stack<int> valores = new Stack<int>();
+            while (tokens.Count > 0)
+            {
+                string elem = tokens.Dequeue();
+                switch (elem)
+                {
+                    case "+":
+                        {
+                            int b = valores.Pop();
+                            int a = valores.Pop();
+                            int resultado = a + b;
+                            valores.Push(resultado);
+                        }
+                        break;
+                    case "-":
+                        {
+                            int b = valores.Pop();
+                            int a = valores.Pop();
+                            int resultado = a - b;
+                            valores.Push(resultado);
+                        }
+                        break;
+                    case "*":
+                        {
+                            int b = valores.Pop();
+                            int a = valores.Pop();
+                            int resultado = a * b;
+                            valores.Push(resultado);
+                        }
+                        break;
+                    case "/":
+                        {
+                            int b = valores.Pop();
+                            int a = valores.Pop();
+                            int resultado = a / b;
+                            valores.Push(resultado);
+                        }
+                        break;
+                    case "^":
+                        {
+                            int b = valores.Pop();
+                            int a = valores.Pop();
+                            int resultado = (int)Math.Pow(a, b);
+                            valores.Push(resultado);
+                        }
+                        break;
+                    default:
+                        {
+                            // Es un número
+                            int numero = int.Parse(elem);
+                            valores.Push(numero);
+                        }
+                        break;
+                }
+            }
+            lblResultadoPostfix.Text = "Resultado: " + valores.Pop();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Gráficos en Panel lienzo
+            Graphics g = lienzo.CreateGraphics();
+            Pen lapiz = new Pen(Color.Blue, 3);
+            g.DrawEllipse(lapiz, 10, 10, 100, 100);
+           
         }
     }
 }
