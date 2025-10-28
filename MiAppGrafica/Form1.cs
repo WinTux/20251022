@@ -2,9 +2,18 @@ namespace MiAppGrafica
 {
     public partial class Form1 : Form
     {
+        private Point posicionPoligono = new Point(200, 200);
         public Form1()
         {
             InitializeComponent();
+            lienzo.Paint += lienzo_paint;
+            typeof(Panel).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+        .SetValue(lienzo, true);
+            this.KeyPreview = true;
+            this.KeyDown += Form1_KeyDown;
+            lienzo.TabStop = true;
+            lienzo.Click += (s, e) => lienzo.Focus();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -275,13 +284,71 @@ namespace MiAppGrafica
             lblResultadoPostfix.Text = "Resultado: " + valores.Pop();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+        private void lienzo_paint(object sender, PaintEventArgs e)
         {
             // Gráficos en Panel lienzo
-            Graphics g = lienzo.CreateGraphics();
+            Graphics g = e.Graphics;
             Pen lapiz = new Pen(Color.Blue, 3);
             g.DrawEllipse(lapiz, 10, 10, 100, 100);
-           
+
+            Brush brocha = new SolidBrush(Color.Red);
+            g.FillRectangle(brocha, 150, 10, 100, 100);
+
+            Rectangle rectangle = new Rectangle(300, 10, 100, 100);
+            g.FillEllipse(brocha, rectangle);
+
+            brocha = new SolidBrush(Color.Green);
+            g.FillRectangle(brocha, posicionPoligono.X, posicionPoligono.Y, 100, 100);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // <-- Mover polígono a la izquierda
+            posicionPoligono.X -= 10;
+            lienzo.Invalidate();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // --> Mover polígono a la derecha
+            posicionPoligono.X += 10;
+            lienzo.Invalidate();
+        }
+
+        private void movimiento_mouse(object sender, MouseEventArgs e)
+        {
+            // Rescatar coordenadas del mouse
+            int x = e.X;
+            int y = e.Y;
+            posicionPoligono.X = x;
+            posicionPoligono.Y = y;
+            lienzo.Invalidate();
+        }
+
+        // Método evento para teclas presionadas
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                posicionPoligono.X -= 10;
+                lienzo.Invalidate();
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                posicionPoligono.X += 10;
+                lienzo.Invalidate();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // Abrir una ventana emergente
+            MessageBox.Show("¡Hola! Esta es una ventana emergente.", "Ventana Emergente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Mensaje con confirmación
+            DialogResult resultado = MessageBox.Show("¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
     }
 }

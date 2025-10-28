@@ -50,13 +50,18 @@
             lblExpresionPostfix = new Label();
             label5 = new Label();
             tabPage3 = new TabPage();
+            button8 = new Button();
+            button7 = new Button();
             groupBox1 = new GroupBox();
             lienzo = new Panel();
+            tabPage4 = new TabPage();
+            button9 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             groupBox1.SuspendLayout();
+            tabPage4.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -146,6 +151,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Location = new Point(247, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -263,6 +269,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button8);
+            tabPage3.Controls.Add(button7);
             tabPage3.Controls.Add(groupBox1);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -270,6 +278,26 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(286, 421);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 2;
+            button8.Text = "- >";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(189, 421);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 1;
+            button7.Text = "< -";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // groupBox1
             // 
@@ -287,6 +315,28 @@
             lienzo.Name = "lienzo";
             lienzo.Size = new Size(413, 296);
             lienzo.TabIndex = 0;
+            lienzo.Paint += lienzo_paint;
+            lienzo.MouseMove += movimiento_mouse;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(button9);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(529, 504);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Ventanas";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(47, 25);
+            button9.Name = "button9";
+            button9.Size = new Size(129, 23);
+            button9.TabIndex = 0;
+            button9.Text = "Emergente";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // Form1
             // 
@@ -305,7 +355,6 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Ejemplos actuales";
-            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -313,6 +362,7 @@
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -343,5 +393,9 @@
         private Button button6;
         private GroupBox groupBox1;
         private Panel lienzo;
+        private Button button8;
+        private Button button7;
+        private TabPage tabPage4;
+        private Button button9;
     }
 }
