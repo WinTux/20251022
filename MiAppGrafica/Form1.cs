@@ -1,3 +1,6 @@
+using MiAppGrafica.Herramientas;
+using MiAppGrafica.Ventanas;
+
 namespace MiAppGrafica
 {
     public partial class Form1 : Form
@@ -25,9 +28,12 @@ namespace MiAppGrafica
             bool siSePudoConvertir1 = int.TryParse(n1, out int num1);
             bool siSePudoConvertir = int.TryParse(n2, out int num2);
             if (siSePudoConvertir && siSePudoConvertir1)
-                lblResultado.Text = "Resultado: " + (num1 + num2);
+                lblResultado.Text = "Resultado: " + Calculos.Sumar(num1,num2);
             else
                 lblResultado.Text = "POR FAVOR INGRESE SOLO NUMEROS";
+            Calculos c = new Calculos();
+            Console.WriteLine(c.version());
+            Console.WriteLine(Math.PI);
         }
         public void unMetodo(object sender, EventArgs e)
         {
@@ -348,7 +354,25 @@ namespace MiAppGrafica
             MessageBox.Show("¡Hola! Esta es una ventana emergente.", "Ventana Emergente", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Mensaje con confirmación
-            DialogResult resultado = MessageBox.Show("¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("¿Desea abrir una ventana nueva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                Ventana1 ventanaNueva = new Ventana1();
+                ventanaNueva.Show();
+            }
+            else
+            {
+                lblResultado.Text = "El usuario decidió no continuar.";
+            }
+        }
+
+        private void abrir_ventana_1(object sender, EventArgs e)
+        {
+            Ventana1 ventanaNueva = new Ventana1(this);
+            ventanaNueva.num1 = int.Parse(txtNumero1.Text);
+            ventanaNueva.num2 = int.Parse(txtNumero2.Text);
+            ventanaNueva.Show();
+            this.Hide();
         }
     }
 }

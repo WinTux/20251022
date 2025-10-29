@@ -56,6 +56,7 @@
             lienzo = new Panel();
             tabPage4 = new TabPage();
             button9 = new Button();
+            button10 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -320,6 +321,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button10);
             tabPage4.Controls.Add(button9);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -337,6 +339,16 @@
             button9.Text = "Emergente";
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(47, 65);
+            button10.Name = "button10";
+            button10.Size = new Size(129, 23);
+            button10.TabIndex = 1;
+            button10.Text = "Abrir ventana";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += abrir_ventana_1;
             // 
             // Form1
             // 
@@ -397,5 +409,6 @@
         private Button button7;
         private TabPage tabPage4;
         private Button button9;
+        private Button button10;
     }
 }
