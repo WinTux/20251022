@@ -369,8 +369,16 @@ namespace MiAppGrafica
         private void abrir_ventana_1(object sender, EventArgs e)
         {
             Ventana1 ventanaNueva = new Ventana1(this);
-            ventanaNueva.num1 = int.Parse(txtNumero1.Text);
-            ventanaNueva.num2 = int.Parse(txtNumero2.Text);
+            try
+            {
+                ventanaNueva.num1 = int.Parse(txtNumero1.Text);
+                ventanaNueva.num2 = int.Parse(txtNumero2.Text);
+            }catch (FormatException e2)
+            {
+                lblResultado.Text = "POR FAVOR INGRESE SOLO NUMEROS";
+                return;
+            }
+
             ventanaNueva.Show();
             this.Hide();
         }
